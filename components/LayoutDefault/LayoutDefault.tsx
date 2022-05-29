@@ -1,0 +1,25 @@
+import styles from "./LayoutDefault.module.scss";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import { ReactNode } from "react";
+import Layout, { Content } from "antd/lib/layout/layout";
+
+interface ILayoutDefaultProps {
+  children: ReactNode | ReactNode[];
+}
+
+const LayoutDefault = ({ children }: ILayoutDefaultProps) => {
+  console.log("This is LayoutDefault component");
+
+  return (
+    <Layout>
+      <Header />
+      <Layout>
+        <Content className={styles.content}>{children}</Content>
+      </Layout>
+      <Footer />
+    </Layout>
+  );
+};
+
+export default LayoutDefault;

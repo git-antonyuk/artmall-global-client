@@ -1,0 +1,19 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  padding-top: 6px;
+  background: white;
+  transition: transform 0.5s ease-in-out;
+
+  &--hidden {
+    transform: translate3d(0, -102%, 0);
+  }
+
+  &--on-top {
+    // background: transparent;
+    // transform: translate3d(0, 0, 0);
+  }
+}
