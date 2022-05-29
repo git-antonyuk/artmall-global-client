@@ -30,7 +30,7 @@ const SwitchLocale = () => {
           </Link>
         ),
         key: item.key,
-      }))}
+      })).filter(item => item.key !== locale)}
     />
   );
 
@@ -39,7 +39,7 @@ const SwitchLocale = () => {
 
   return (
     <Dropdown overlay={menu} placement="bottom">
-      <Button>{getCurrentLocaleLabel()} <DownOutlined /></Button>
+      <Button>{getCurrentLocaleLabel()}<DownOutlined /></Button>
     </Dropdown>
   );
 };
