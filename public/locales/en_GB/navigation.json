@@ -1,0 +1,13 @@
+{
+  "headerNavigation": {
+    "catalog": "Catalog",
+    "authors": "Authors",
+    "about": "About us",
+    "sell": "Sell",
+    "faq": "FAQ"
+  },
+  "footerNavigation": {
+    "privacy": "Privacy policy",
+    "exchange": "Exchange of goods"
+  }
+}

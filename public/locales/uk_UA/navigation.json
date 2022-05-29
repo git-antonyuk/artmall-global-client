@@ -1,0 +1,13 @@
+{
+  "headerNavigation": {
+    "catalog": "Каталог",
+    "authors": "Автори",
+    "about": "Про нас",
+    "sell": "Продати",
+    "faq": "FAQ"
+  },
+  "footerNavigation": {
+    "privacy": "Політика конфіденційності",
+    "exchange": "Обмін товару"
+  }
+}

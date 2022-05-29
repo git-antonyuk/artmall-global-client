@@ -1,12 +1,12 @@
+import { Footer } from 'antd/lib/layout/layout';
 import './Footer.module.scss';
 
-const Footer = () => {
-    console.log('This is Footer component');
+const CustomFooter = () => {
     return (
-        <div className="footer">
-            <div>Footer</div>
-        </div>
+        <Footer>
+             <div>2022</div>
+        </Footer>
     );
 };
 
-export default Footer;
+export default CustomFooter;

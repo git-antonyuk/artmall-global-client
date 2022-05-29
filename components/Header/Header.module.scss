@@ -5,8 +5,10 @@
   left: 0;
   z-index: 1000;
   padding-top: 6px;
+  padding-bottom: 8px;
   background: white;
   transition: transform 0.5s ease-in-out;
+  line-height: 1;
 
   &--hidden {
     transform: translate3d(0, -102%, 0);
@@ -14,6 +16,19 @@
 
   &--on-top {
     // background: transparent;
-    // transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

@@ -2,10 +2,11 @@ import type { NextPage } from "next";
 // import Head from 'next/head'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
-import { DatePicker } from "antd";
+// import { DatePicker } from "antd";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import LayoutDefault from "../components/LayoutDefault/LayoutDefault";
+import { IGetStaticProps } from "../types";
 
 const Home: NextPage = () => {
   const { t } = useTranslation("common");
@@ -14,17 +15,15 @@ const Home: NextPage = () => {
     <LayoutDefault>
       <div>
         <p>{t("hello")}</p>
-        <DatePicker />
       </div>
     </LayoutDefault>
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => {
+export const getStaticProps = async ({ locale }: IGetStaticProps) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-      // Will be passed to the page component as props
+      ...(await serverSideTranslations(locale, ["common", "navigation"])),
     },
   };
 };

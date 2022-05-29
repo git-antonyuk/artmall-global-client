@@ -9,8 +9,6 @@ interface ILayoutDefaultProps {
 }
 
 const LayoutDefault = ({ children }: ILayoutDefaultProps) => {
-  console.log("This is LayoutDefault component");
-
   return (
     <Layout>
       <Header />
