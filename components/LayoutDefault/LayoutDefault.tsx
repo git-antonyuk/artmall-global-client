@@ -12,8 +12,8 @@ const LayoutDefault = ({ children }: ILayoutDefaultProps) => {
   return (
     <Layout>
       <Header />
-      <Layout>
-        <Content className={styles.content}>{children}</Content>
+      <Layout className={styles.content}>
+        <Content>{children}</Content>
       </Layout>
       <Footer />
     </Layout>

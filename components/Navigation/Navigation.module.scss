@@ -3,4 +3,29 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 15px;
+}
+
+.link {
+  position: relative;
+  padding: 8px 0;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: -110%;
+    right: 110%;
+    bottom: 0;
+    border-bottom: 2px solid $c-gold;
+    z-index: -1;
+    // transform: rotateZ(45deg);
+    @include transition(0.3);
+  }
+
+  &:hover {
+    &:after {
+      transform: translate3d(110%, 0, 0);
+    }
+  }
 }

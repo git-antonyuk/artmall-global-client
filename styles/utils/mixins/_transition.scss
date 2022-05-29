@@ -1,0 +1,4 @@
+@mixin transition($duration) {
+  transition-timing-function: cubic-bezier(0.6, 0, 0.41, 1);
+  transition-duration: $duration + s;
+}

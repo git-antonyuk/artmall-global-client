@@ -11,6 +11,7 @@ const nextConfig = withAntdLess({
   // scss
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
+    prependData: `@import "./styles/index.scss";`,
   },
   // ant theme
   lessVarsFilePath: './styles/ant/variables.less',

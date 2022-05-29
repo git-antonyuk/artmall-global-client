@@ -1,32 +1,42 @@
 import styles from "./Navigation.module.scss";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import { Button } from "antd";
 
 const Navigation = () => {
   const { t } = useTranslation("navigation");
 
   const items = [
     {
-      label: <Link href="/catalog">{t("headerNavigation.catalog")}</Link>,
+      href: "/catalog",
+      label: t("headerNavigation.catalog"),
     },
     {
-      label: <Link href="/authors">{t("headerNavigation.authors")}</Link>,
+      href: "/authors",
+      label: t("headerNavigation.authors"),
     },
     {
-      label: <Link href="/about">{t("headerNavigation.about")}</Link>,
+      href: "/about",
+      label: t("headerNavigation.about"),
     },
     {
-      label: <Link href="/faq">{t("headerNavigation.faq")}</Link>,
+      href: "/faq",
+      label: t("headerNavigation.faq"),
     },
     {
-      label: <Link href="/sell">{t("headerNavigation.sell")}</Link>,
+      href: "/sell",
+      label: t("headerNavigation.sell"),
     },
   ];
 
   return (
     <ul className={styles.list}>
       {items.map((item, i) => (
-        <li key={i}>{item.label}</li>
+        <li key={i} className={styles.link}>
+          <Link href={item.href}>
+            <a>{item.label}</a>
+          </Link>
+        </li>
       ))}
     </ul>
   );
