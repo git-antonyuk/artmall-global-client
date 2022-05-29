@@ -1,4 +1,4 @@
-# Artmall Global 👨🏻‍🎨
+# Artmall Global 👨🏻‍🎨 (Work in progress, move to next.js)
 This is client side of art marketplace.
 [Live](https://artmall.global)
 
