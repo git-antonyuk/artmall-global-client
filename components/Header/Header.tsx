@@ -3,6 +3,7 @@ import styles from "./Header.module.scss";
 import Logo from "./Logo/Logo";
 import useHeader from "./useHeader";
 import Navigation from "../Navigation/Navigation";
+import SwitchLocale from "../SwitchLocale/SwitchLocale";
 
 const CustomHeader = () => {
   const { show, isOnTop } = useHeader();
@@ -19,7 +20,7 @@ const CustomHeader = () => {
           <Navigation />
         </div>
         <div>
-          Items
+          <SwitchLocale />
         </div>
       </div>
     </Header>

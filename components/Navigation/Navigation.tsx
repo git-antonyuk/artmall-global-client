@@ -7,19 +7,19 @@ const Navigation = () => {
 
   const items = [
     {
-      label: <Link href="/catalog">{t("catalog")}</Link>,
+      label: <Link href="/catalog">{t("headerNavigation.catalog")}</Link>,
     },
     {
-      label: <Link href="/authors">{t("authors")}</Link>,
+      label: <Link href="/authors">{t("headerNavigation.authors")}</Link>,
     },
     {
-      label: <Link href="/about">{t("about")}</Link>,
+      label: <Link href="/about">{t("headerNavigation.about")}</Link>,
     },
     {
-      label: <Link href="/faq">{t("faq")}</Link>,
+      label: <Link href="/faq">{t("headerNavigation.faq")}</Link>,
     },
     {
-      label: <Link href="/sell">{t("sell")}</Link>,
+      label: <Link href="/sell">{t("headerNavigation.sell")}</Link>,
     },
   ];
 
