@@ -1,0 +1,13 @@
+{
+  "navBar": {
+    "placeholder": "Search by artist, product...",
+    "artist": "Artist",
+    "product": "Product",
+    "fullResult": "See full results for: ",
+    "nothingFound": "Nothing found"
+  },
+  "searchPage": {
+    "results": "Result be search: ",
+    "more": "More..."
+  }
+}

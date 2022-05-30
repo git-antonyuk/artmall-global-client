@@ -1,8 +1,4 @@
 import type { NextPage } from "next";
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
-// import { DatePicker } from "antd";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import LayoutDefault from "../components/LayoutDefault/LayoutDefault";
@@ -27,7 +23,7 @@ const Home: NextPage = () => {
 export const getStaticProps = async ({ locale }: IGetStaticProps) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "navigation"])),
+      ...(await serverSideTranslations(locale, ["common", "navigation", "search"])),
     },
   };
 };

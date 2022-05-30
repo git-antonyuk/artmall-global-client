@@ -4,6 +4,8 @@ import Logo from "./Logo/Logo";
 import useHeader from "./useHeader";
 import Navigation from "../Navigation/Navigation";
 import SwitchLocale from "../SwitchLocale/SwitchLocale";
+import SearchBar from "../SearchBar/SearchBar";
+import Hamburger from "./Hamburger/Hamburger";
 
 const CustomHeader = () => {
   const { show, isOnTop } = useHeader();
@@ -16,9 +18,11 @@ const CustomHeader = () => {
     <Header className={headerClasses}>
       <div className={styles.content}>
         <div className={styles.left}>
+          <Hamburger />
           <Logo />
-          <Navigation />
+          <SearchBar />
         </div>
+        <Navigation />
         <div>
           <SwitchLocale />
         </div>
