@@ -27,6 +27,13 @@
   }
 }
 
+.search {
+  display: none !important; 
+  @include respUp(md) {
+    display: inline-block !important; 
+  }
+}
+
 .navigation {
   display: none !important; 
   @include respUp(lg) {

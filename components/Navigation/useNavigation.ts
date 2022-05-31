@@ -1,9 +1,6 @@
-import styles from "./Navigation.module.scss";
 import { useTranslation } from "next-i18next";
-import Link from "next/link";
-import { DefaultProps } from "types";
 
-const Navigation = ({ className }: DefaultProps) => {
+const useNavigation = () => {
   const { t } = useTranslation("navigation");
 
   const items = [
@@ -29,19 +26,9 @@ const Navigation = ({ className }: DefaultProps) => {
     },
   ];
 
-  const componentStyles = `${styles.list} ${className}`;
+  return {
+    items
+  }
+}
 
-  return (
-    <ul className={componentStyles}>
-      {items.map((item, i) => (
-        <li key={i} className={styles.link}>
-          <Link href={item.href}>
-            <a>{item.label}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-export default Navigation;
+export default useNavigation;

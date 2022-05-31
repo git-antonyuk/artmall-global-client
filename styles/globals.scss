@@ -18,3 +18,23 @@ html, body {
   height: auto !important;
   line-height: 1 !important;
 }
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+
+  @include respOnly(md) {
+    padding: 0 20px;
+  }
+
+  @include respOnly(lg) {
+    padding: 0 60px;
+  }
+
+  @include respUp(xl) {
+    max-width: 2840px;
+    padding: 0 60px;
+  }
+}

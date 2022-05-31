@@ -1,0 +1,7 @@
+.search {
+  padding: 16px 0;
+
+  @include respUp(md) {
+    display: none;
+  }
+}

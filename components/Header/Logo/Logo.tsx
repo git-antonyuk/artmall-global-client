@@ -6,7 +6,12 @@ const Logo = () => {
   return (
     <Link href="/">
       <a>
-        <Image src="/img/logo.svg" width={160} height={52} />
+        <Image
+          src="/img/logo.svg"
+          width={160}
+          height={52}
+          alt="Logo artmall.global"
+        />
       </a>
     </Link>
   );
