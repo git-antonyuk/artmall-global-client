@@ -1,6 +1,6 @@
-const path = require('path')
-const { i18n } = require('./next-i18next.config');
-const withAntdLess = require('next-plugin-antd-less');
+const path = require("path");
+const { i18n } = require("./next-i18next.config");
+const withAntdLess = require("next-plugin-antd-less");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withAntdLess({
@@ -10,14 +10,17 @@ const nextConfig = withAntdLess({
   i18n,
   // scss
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-    prependData: `@import "./styles/index.scss";`,
+    includePaths: [path.join(__dirname, "styles")],
+    prependData: `
+      @import "@/styles/variables.scss";
+      @import "@/styles/utils/functions/_breakpoints.scss";
+      @import "@/styles/utils/mixins/index.scss";
+    `,
   },
   // ant theme
-  lessVarsFilePath: './styles/ant/variables.less',
+  lessVarsFilePath: "./styles/ant/variables.less",
   lessVarsFilePathAppendToEndOfContent: false,
   cssLoaderOptions: {},
-
 
   webpack(config) {
     return config;
@@ -26,6 +29,6 @@ const nextConfig = withAntdLess({
   future: {
     webpack5: true,
   },
-})
+});
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -18,11 +18,11 @@ const CustomHeader = () => {
     <Header className={headerClasses}>
       <div className={styles.content}>
         <div className={styles.left}>
-          <Hamburger />
+          <Hamburger className={styles.hamburger} />
           <Logo />
           <SearchBar />
         </div>
-        <Navigation />
+        <Navigation className={styles.navigation}/>
         <div>
           <SwitchLocale />
         </div>

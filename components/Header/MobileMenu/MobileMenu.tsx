@@ -1,17 +1,27 @@
-import styles from './MobileMenu.module.scss';
-import { stateGlobalUi } from '../../../state/globalUi';
-import { useSnapshot } from 'valtio';
-
+import styles from "./MobileMenu.module.scss";
+import { stateGlobalUi, toggleShowMobileMenu } from "@/state/globalUi";
+import { useSnapshot } from "valtio";
+import { Drawer } from "antd";
 
 const MobileMenu = () => {
-    const snap = useSnapshot(stateGlobalUi);
-    console.log('This is MobileMenu component');
-    return (
-        <div className="mobile-menu">
-            {snap.showMobileMenu ? 'true' : 'false'}
-            <div>MobileMenu</div>
-        </div>
-    );
+  const snap = useSnapshot(stateGlobalUi);
+  const onClose = () => {
+    toggleShowMobileMenu();
+  };
+  return (
+    <Drawer
+      title="Basic Drawer"
+      placement="left"
+      closable={true}
+      onClose={onClose}
+      visible={snap.showMobileMenu}
+      key="left"
+    >
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+    </Drawer>
+  );
 };
 
 export default MobileMenu;

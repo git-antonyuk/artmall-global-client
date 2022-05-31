@@ -1,9 +1,9 @@
 import styles from "./Navigation.module.scss";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { Button } from "antd";
+import { DefaultProps } from "types";
 
-const Navigation = () => {
+const Navigation = ({ className }: DefaultProps) => {
   const { t } = useTranslation("navigation");
 
   const items = [
@@ -29,8 +29,10 @@ const Navigation = () => {
     },
   ];
 
+  const componentStyles = `${styles.list} ${className}`;
+
   return (
-    <ul className={styles.list}>
+    <ul className={componentStyles}>
       {items.map((item, i) => (
         <li key={i} className={styles.link}>
           <Link href={item.href}>

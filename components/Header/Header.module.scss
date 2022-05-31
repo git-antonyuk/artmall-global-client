@@ -9,6 +9,7 @@
   background: white;
   transition: transform 0.5s ease-in-out;
   line-height: 1;
+  height: auto;
 
   &--hidden {
     transform: translate3d(0, -102%, 0);
@@ -17,6 +18,19 @@
   &--on-top {
     // background: transparent;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+.hamburger {
+  @include respUp(lg) {
+    display: none !important; 
+  }
+}
+
+.navigation {
+  display: none !important; 
+  @include respUp(lg) {
+    display: flex !important; 
   }
 }
 

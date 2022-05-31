@@ -13,3 +13,8 @@ html, body {
 .ant-layout {
   height: 100%;
 }
+
+.ant-layout-header {
+  height: auto !important;
+  line-height: 1 !important;
+}

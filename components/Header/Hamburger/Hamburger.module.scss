@@ -1,3 +1,11 @@
-.hamburger {
-  position: relative;
+@import "@/styles/helpers/cleanButton.scss";
+
+.button {
+  height: 42px;
+  width: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @extend %cleanButton;
 }
