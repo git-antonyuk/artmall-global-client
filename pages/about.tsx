@@ -1,24 +1,22 @@
+import getCommonTranslations from "@/utils/getCommonTranslations";
 import type { NextPage } from "next";
-import styles from "../styles/About.module.scss";
 import LayoutDefault from "../components/LayoutDefault/LayoutDefault";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { IGetStaticProps } from "../types";
 
 const AboutPage: NextPage = () => {
   return (
     <LayoutDefault>
-      <div className="about">
-        <div>About</div>
-      </div>
+      <h1>About page</h1>
     </LayoutDefault>
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => {
-    return {
-      props: {
-        ...(await serverSideTranslations(locale, ["common", "navigation"])),
-      },
-    };
+export const getStaticProps = async ({ locale }: IGetStaticProps) => {
+  return {
+    props: {
+      ...(await getCommonTranslations(locale)),
+    },
   };
+};
 
 export default AboutPage;
