@@ -1,22 +1,34 @@
+import ProductsList from "@/components/Catalog/ProductsList/ProductsList";
 import getCommonTranslations from "@/utils/getCommonTranslations";
-import type { NextPage } from "next";
+import type {
+  GetServerSidePropsContext,
+  NextPage,
+} from "next";
+import fetch from "node-fetch";
 import LayoutDefault from "../components/LayoutDefault/LayoutDefault";
-import { IGetStaticProps } from "../types";
 
 const CatalogPage: NextPage = () => {
   return (
     <LayoutDefault>
-      <h1>Catalog page</h1>
+      <ProductsList />
     </LayoutDefault>
   );
 };
 
-export const getStaticProps = async ({ locale }: IGetStaticProps) => {
-  return {
-    props: {
-      ...(await getCommonTranslations(locale)),
-    },
+export async function getServerSideProps({ query, locale }: GetServerSidePropsContext) {
+  const res = await fetch(`${process.env.BASE_URL}/api/catalog-products`, {
+    method: "post",
+    body: JSON.stringify(query),
+    headers: { "Content-Type": "application/json" },
+  });
+  const data = await res.json();
+
+  return { 
+    props: { 
+      data, 
+      ...(await getCommonTranslations(locale || 'en_GB')) 
+    } 
   };
-};
+}
 
 export default CatalogPage;
