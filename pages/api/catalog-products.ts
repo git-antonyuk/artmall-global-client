@@ -3,8 +3,9 @@ import fetchCollection from "api/fetchCollection";
 import type { NextApiRequest, NextApiResponse } from "next";
 import transformProducts from "api/transformers/transformProducts";
 import fetchCollectionCount from "api/fetchCollectionCount";
+import { CATALOG_PER_PAGE_DEFAULT_LIMIT } from "@/utils/constants";
 
-const LIMIT = 12;
+
 const CONTENT_TYPE_NAME = "products";
 
 export default async function handler(
@@ -14,7 +15,7 @@ export default async function handler(
   const { page, limit, locale } = req.body.params;
 
   const currentPage = Number(page) - 1 || 0;
-  const currentLimit = Number(limit) || LIMIT;
+  const currentLimit = Number(limit) || CATALOG_PER_PAGE_DEFAULT_LIMIT;
 
   const collectionOptions = {
     removedByUser_ne: true,
@@ -38,8 +39,4 @@ export default async function handler(
       .status(err.status || 500)
       .send({ message: err.message || "Failed to fetch data" });
   }
-}
-
-export {
-  LIMIT
 }

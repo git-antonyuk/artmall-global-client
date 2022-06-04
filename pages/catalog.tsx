@@ -1,5 +1,4 @@
-import CatalogPagination from "@/components/Catalog/CatalogPagination/CatalogPagination";
-import ProductsList from "@/components/Catalog/ProductsList/ProductsList";
+import Catalog from "@/components/Catalog";
 import getCommonTranslations from "@/utils/getCommonTranslations";
 import { getProducts } from "hooks/getProducts";
 import type { GetServerSidePropsContext, NextPage } from "next";
@@ -14,8 +13,7 @@ interface ICatalogPageProps {
 const CatalogPage: NextPage = ({ products, total }: ICatalogPageProps) => {
   return (
     <LayoutDefault>
-      <ProductsList products={products}/>
-      <CatalogPagination total={total} />
+      <Catalog products={products} total={total} />
     </LayoutDefault>
   );
 };
@@ -30,7 +28,7 @@ export async function getServerSideProps({
     props: {
       products,
       total,
-      ...(await getCommonTranslations(locale || "en_GB")),
+      ...(await getCommonTranslations(locale || "en_GB", ["catalog"])),
     },
   };
 }

@@ -3,14 +3,14 @@ import { Pagination } from "antd";
 import { useRouter } from "next/router";
 import type { PaginationProps } from "antd";
 import Link from "next/link";
-import { LIMIT } from "pages/api/catalog-products";
-
+import useCatalogPerPage from "hooks/useCatalogPerPage";
 interface ICatalogPagination {
   total?: number;
 }
 
 const CatalogPagination = ({ total }: ICatalogPagination) => {
   const router = useRouter();
+  const { getCurrentLimit } = useCatalogPerPage();
 
   const itemRender: PaginationProps["itemRender"] = (
     pageNumber,
@@ -35,12 +35,16 @@ const CatalogPagination = ({ total }: ICatalogPagination) => {
     return originalElement;
   };
 
+  const currentPage = Number(router.query.page) || 1
+  
+
   return (
     <Pagination
-      defaultCurrent={Number(router.query.page) || 1}
+      defaultCurrent={currentPage}
       total={total || 0}
       itemRender={itemRender}
-      defaultPageSize={LIMIT}
+      defaultPageSize={getCurrentLimit()}
+      showSizeChanger={false}
     />
   );
 };

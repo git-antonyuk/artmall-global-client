@@ -15,8 +15,8 @@ const transformProducts = (products: IProduct[], locale: string) => {
 
     const result = {
       ...product,
-      title: product[`title_${lang}`],
-      description: product[`description_${lang}`]
+      title: product[`title_${lang}`] || product.title_en,
+      description: product[`description_${lang}`] || product.description_en
     }
 
     return result;

@@ -38,7 +38,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "utils/constants.js"
+    "utils/constants.ts"
   ],
   "exclude": [
     "node_modules"
