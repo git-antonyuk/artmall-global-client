@@ -12,7 +12,7 @@ interface ICatalogProps {
 const Catalog = ({ products, total }: ICatalogProps) => {
   return (
     <>
-      <CatalogFilters />
+      <CatalogFilters total={total || 0} />
       <ProductsList products={products} />
       <CatalogPagination total={total} />
       <PerPage />

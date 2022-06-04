@@ -114,3 +114,12 @@ export interface IProduct {
 export interface IApiError {
   message: string
 }
+
+type TCollectionSort = "rating:DESC"
+export interface ICollectionQueryParams {
+  removedByUser_ne: boolean,
+  _start: number,
+  _limit: number,
+  _sort: TCollectionSort,
+  _where?: any[]
+}

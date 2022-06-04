@@ -7,6 +7,7 @@ const fetchCollection = async (
   params: ICollectionQueryParams
 ): Promise<IProduct[]> => {
   const query = qs.stringify(params);
+  console.log('%c 🥃 query: ', 'font-size:12px;background-color: #F5CE50;color:#fff;', query);
   const queryParams = (query && `?${query}`) || "";
   const url = `${config.apiUrl}/${contentType}${queryParams}`;
 

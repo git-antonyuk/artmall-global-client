@@ -1,19 +1,38 @@
 import styles from "./CatalogFilters.module.scss";
-import { Switch, Drawer, Input } from "antd";
+import { Drawer } from "antd";
 import { useState } from "react";
 import FilterSwitch from "./FilterSwitch/FilterSwitch";
 import { useTranslation } from "next-i18next";
+import FilterPrice from "./FilterPrice/FilterPrice";
+import { useRouter } from "next/router";
 
-const CatalogFilters = () => {
-    const { t } = useTranslation("catalog");
-  const [opened, setOpened] = useState<boolean>(false);
+interface ICatalogFiltersProps {
+  total: number
+}
+const CatalogFilters = ({ total }: ICatalogFiltersProps) => {
+  const router = useRouter();
+  const { t } = useTranslation("catalog");
+  const [opened, setOpened] = useState<boolean>(router.query.show === "1");
 
-  const onChange = (value: any) => {
+  const removeShowQuery = () => {
+    const list = { ...router.query };
+    delete list.show;
+    router.push({
+      pathname: "/catalog",
+      query: list,
+    });
+  };
+
+  const onChange = (value: boolean) => {
     setOpened(value);
+    if (!value) {
+      removeShowQuery();
+    }
   };
 
   const onClose = () => {
     setOpened(false);
+    removeShowQuery();
   };
 
   return (
@@ -27,9 +46,10 @@ const CatalogFilters = () => {
         visible={opened}
         key="filters-menu"
       >
-        <>
-          <h1>Filters hello world!</h1>
-        </>
+        <div>
+          total found: {total}
+        </div>
+        <FilterPrice />
       </Drawer>
     </>
   );
