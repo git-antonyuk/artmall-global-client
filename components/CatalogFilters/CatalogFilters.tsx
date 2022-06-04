@@ -1,17 +1,19 @@
 import styles from "./CatalogFilters.module.scss";
-import { Drawer } from "antd";
-import { useState } from "react";
+import { Drawer, Spin } from "antd";
+import { useEffect, useState } from "react";
 import FilterSwitch from "./FilterSwitch/FilterSwitch";
 import { useTranslation } from "next-i18next";
 import FilterPrice from "./FilterPrice/FilterPrice";
 import { useRouter } from "next/router";
+import useCatalogFilters from "hooks/useCatalogFilters";
 
 interface ICatalogFiltersProps {
-  total: number
+  total: number;
 }
 const CatalogFilters = ({ total }: ICatalogFiltersProps) => {
   const router = useRouter();
   const { t } = useTranslation("catalog");
+  const { loading, fetch: fetchFilters } = useCatalogFilters();
   const [opened, setOpened] = useState<boolean>(router.query.show === "1");
 
   const removeShowQuery = () => {
@@ -35,6 +37,12 @@ const CatalogFilters = ({ total }: ICatalogFiltersProps) => {
     removeShowQuery();
   };
 
+  useEffect(() => {
+    if (opened) {
+      fetchFilters();
+    }
+  }, [opened, fetchFilters]);
+
   return (
     <>
       <FilterSwitch opened={opened} onChange={onChange} />
@@ -46,10 +54,12 @@ const CatalogFilters = ({ total }: ICatalogFiltersProps) => {
         visible={opened}
         key="filters-menu"
       >
-        <div>
-          total found: {total}
-        </div>
-        <FilterPrice />
+        <Spin spinning={loading}>
+          <h5 className={styles.total}>
+            {t("foundProducts")} {total}
+          </h5>
+          <FilterPrice />
+        </Spin>
       </Drawer>
     </>
   );

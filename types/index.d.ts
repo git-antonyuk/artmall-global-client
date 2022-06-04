@@ -6,7 +6,7 @@ export interface DefaultProps {
   className?: string
 }
 
-export type TContentType = "products";
+export type TContentType = "products" | "categories" | "styles" | "subjects" | "techniques";
 
 export interface ICollectionQueryParams {
   removedByUser_ne?: boolean,
