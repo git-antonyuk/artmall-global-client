@@ -20,8 +20,10 @@ const LayoutDefault = ({ children }: ILayoutDefaultProps) => {
       <Header />
       <Layout className={styles.content}>
         <MobileMenu />
-        <MobileSearch />
-        <main className="container">{mainContent}</main>
+        <main className="container">
+          <MobileSearch />
+          {mainContent}
+        </main>
       </Layout>
       <Footer />
     </Layout>

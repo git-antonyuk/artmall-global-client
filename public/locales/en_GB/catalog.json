@@ -1,3 +1,7 @@
 {
-  "perPage": "per page"
+  "perPage": "per page",
+  "filtersHide": "Hide filters",
+  "filtersShow": "Show filters",
+  "foundProducts": "Found products:",
+  "filters": "Filters:"
 }
