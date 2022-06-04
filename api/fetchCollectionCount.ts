@@ -4,7 +4,7 @@ import qs from "qs";
 
 const fetchCollectionCount = async (
   contentType: TContentType,
-  params: { [key: string]: string }
+  params: { [key: string]: string | boolean }
 ) => {
   const query = qs.stringify(params);
   const queryParams = (query && `?${query}`) || ''

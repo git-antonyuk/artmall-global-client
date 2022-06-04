@@ -1,11 +1,11 @@
-import { TContentType, ICollectionQueryParams, Product } from "./../types/index.d";
+import { TContentType, ICollectionQueryParams, IProduct } from "./../types/index.d";
 import { config } from "../config";
 import qs from "qs";
 
 const fetchCollection = async (
   contentType: TContentType,
   params: ICollectionQueryParams
-): Promise<Product[]> => {
+): Promise<IProduct[]> => {
   const query = qs.stringify(params);
   const queryParams = (query && `?${query}`) || "";
   const url = `${config.apiUrl}/${contentType}${queryParams}`;

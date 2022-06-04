@@ -1,33 +1,37 @@
+import CatalogPagination from "@/components/Catalog/CatalogPagination/CatalogPagination";
 import ProductsList from "@/components/Catalog/ProductsList/ProductsList";
 import getCommonTranslations from "@/utils/getCommonTranslations";
-import type {
-  GetServerSidePropsContext,
-  NextPage,
-} from "next";
-import fetch from "node-fetch";
+import { getProducts } from "hooks/getProducts";
+import type { GetServerSidePropsContext, NextPage } from "next";
+import { IProduct } from "types";
 import LayoutDefault from "../components/LayoutDefault/LayoutDefault";
 
-const CatalogPage: NextPage = () => {
+interface ICatalogPageProps {
+  products?: IProduct[];
+  total?: number;
+}
+
+const CatalogPage: NextPage = ({ products, total }: ICatalogPageProps) => {
   return (
     <LayoutDefault>
-      <ProductsList />
+      <ProductsList products={products}/>
+      <CatalogPagination total={total} />
     </LayoutDefault>
   );
 };
 
-export async function getServerSideProps({ query, locale }: GetServerSidePropsContext) {
-  const res = await fetch(`${process.env.BASE_URL}/api/catalog-products`, {
-    method: "post",
-    body: JSON.stringify(query),
-    headers: { "Content-Type": "application/json" },
-  });
-  const data = await res.json();
+export async function getServerSideProps({
+  query,
+  locale,
+}: GetServerSidePropsContext) {
+  const { products, total } = await getProducts({ ...query, locale });
 
-  return { 
-    props: { 
-      data, 
-      ...(await getCommonTranslations(locale || 'en_GB')) 
-    } 
+  return {
+    props: {
+      products,
+      total,
+      ...(await getCommonTranslations(locale || "en_GB")),
+    },
   };
 }
 

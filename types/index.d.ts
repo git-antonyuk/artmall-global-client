@@ -84,7 +84,7 @@ export interface IUser {
   __v: number;
   id: string;
 }
-export interface Product {
+export interface IProduct {
   price: number;
   height: number;
   width: number;
@@ -95,7 +95,11 @@ export interface Product {
   _id: string;
   sold: boolean;
   description_en: string;
+  description_uk: string;
   title_en: string;
+  title_uk: string;
+  title?: string;
+  description?: string;
   createdAt: string;
   updatedAt: string;
   __v: number;
@@ -105,4 +109,8 @@ export interface Product {
   subjects: string[];
   id: string;
   user: IUser;
+}
+
+export interface IApiError {
+  message: string
 }
