@@ -116,6 +116,11 @@ export interface IApiError {
 }
 
 type TCollectionSort = "rating:DESC"
+
+export interface IGeneralQueryParams {
+  removedByUser_ne: boolean,
+  _where?: any[]
+}
 export interface ICollectionQueryParams {
   removedByUser_ne: boolean,
   _start: number,

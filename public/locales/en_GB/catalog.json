@@ -4,5 +4,6 @@
   "filtersShow": "Show filters",
   "foundProducts": "Found products:",
   "filters": "Filters:",
-  "price": "Price"
+  "price": "Price",
+  "pricePlaceholder": "Choose a price"
 }

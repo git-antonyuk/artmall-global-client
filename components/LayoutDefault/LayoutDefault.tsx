@@ -6,6 +6,7 @@ import Layout from "antd/lib/layout/layout";
 import MobileMenu from "../Header/MobileMenu/MobileMenu";
 import MobileSearch from "../SearchBar/MobileSearch/MobileSearch";
 import usePageLoader from "hooks/usePageLoader";
+import { Spin } from "antd";
 
 interface ILayoutDefaultProps {
   children: ReactNode | ReactNode[];
@@ -14,7 +15,6 @@ interface ILayoutDefaultProps {
 const LayoutDefault = ({ children }: ILayoutDefaultProps) => {
   const { loading } = usePageLoader();
 
-  const mainContent = loading ? <div>Loading...</div> : <>{children}</>;
   return (
     <Layout>
       <Header />
@@ -22,7 +22,7 @@ const LayoutDefault = ({ children }: ILayoutDefaultProps) => {
         <MobileMenu />
         <main className="container">
           <MobileSearch />
-          {mainContent}
+          <Spin spinning={loading}>{children}</Spin>
         </main>
       </Layout>
       <Footer />

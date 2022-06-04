@@ -4,5 +4,6 @@
   "filtersShow": "Показати фільтри",
   "foundProducts": "Знайдені товари:",
   "filters": "Фільтри:",
-  "price": "Ціна"
+  "price": "Ціна",
+  "pricePlaceholder": "Виберіть ціну"
 }

@@ -1,10 +1,10 @@
-import { TContentType } from "./../types/index.d";
+import { IGeneralQueryParams, TContentType } from "./../types/index.d";
 import { config } from "../config";
 import qs from "qs";
 
 const fetchCollectionCount = async (
   contentType: TContentType,
-  params: { [key: string]: string | boolean }
+  params: IGeneralQueryParams
 ) => {
   const query = qs.stringify(params);
   const queryParams = (query && `?${query}`) || ''

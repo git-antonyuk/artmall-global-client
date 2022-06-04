@@ -1,54 +1,65 @@
 import { FILTER_PRICE_MAP } from "@/utils/constants";
-import styles from "./FilterPrice.module.scss";
-import Menu from "antd/lib/menu";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import Button from "antd/lib/button";
-import Dropdown from "antd/lib/dropdown";
-import { DownOutlined } from "@ant-design/icons";
+import { Collapse } from "antd";
+import FilterItemWrapper from "@/components/common/FilterItemWrapper/FilterItemWrapper";
+
+const { Panel } = Collapse;
 
 const FilterPrice = () => {
   const { t } = useTranslation("catalog");
   const router = useRouter();
 
-  const getLabel = (item: (number | undefined)[]): string => {
+  const getLabel = (item: (number | undefined)[]): string | null => {
+    if (!item) {
+      return null;
+    }
     return (item[0] || "0") + "$ - " + (item[1] || "n") + "$";
   };
 
-  const menu = (
-    <Menu
-      items={FILTER_PRICE_MAP.map(
-        (item: (number | undefined)[], i: number) => ({
-          label: (
-            <Link
-              href={{
-                pathname: "/catalog",
-                query: {
-                  ...router.query,
-                  price: i,
-                  show: 1
-                },
-              }}
-            >
-              <a>{getLabel(item)}</a>
-            </Link>
-          ),
-          key: i,
-        })
-      ).filter((item) => item.key !== Number(router.query.price))}
-    />
-  );
+  const getPriceQuery = (index: number) => {
+    const queries = { ...router.query };
+    delete queries.page;
+    if (Number(router.query.price) === index) {
+      delete queries.price;
+      return {
+        ...queries,
+      };
+    }
+
+    return {
+      ...queries,
+      price: index,
+    };
+  };
 
   return (
     <>
-      <b>{t("price")}</b>
-      <Dropdown overlay={menu} placement="bottom">
-        <Button>
-          {getLabel(FILTER_PRICE_MAP[Number(router.query.price) || 0])}
-          <DownOutlined />
-        </Button>
-      </Dropdown>
+      <Collapse defaultActiveKey={["1"]}>
+        <Panel header={t("price")} key="1">
+          {FILTER_PRICE_MAP.map((item: (number | undefined)[], i: number) => (
+            <div key={i}>
+              <Link
+                href={{
+                  pathname: "/catalog",
+                  query: {
+                    ...getPriceQuery(i),
+                    show: 1,
+                  },
+                }}
+              >
+                <a>
+                  <FilterItemWrapper
+                    checked={Number(router.query.price) === i}
+                    label={getLabel(item)}
+                  />
+                </a>
+              </Link>
+            </div>
+          ))}
+        </Panel>
+      </Collapse>
     </>
   );
 };
