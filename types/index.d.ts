@@ -119,7 +119,8 @@ type TCollectionSort = "rating:DESC"
 
 export interface IGeneralQueryParams {
   removedByUser_ne: boolean,
-  _where?: any[]
+  _where: any[],
+  'category.id'?: string
 }
 export interface ICollectionQueryParams {
   removedByUser_ne: boolean,

@@ -1,6 +1,6 @@
 import Catalog from "@/components/Catalog";
 import getCommonTranslations from "@/utils/getCommonTranslations";
-import { getProducts } from "hooks/getProducts";
+import getCatalogProducts from "api/asyncGetters/getCatalogProducts";
 import type { GetServerSidePropsContext, NextPage } from "next";
 import { IProduct } from "types";
 import LayoutDefault from "../components/LayoutDefault/LayoutDefault";
@@ -22,12 +22,12 @@ export async function getServerSideProps({
   query,
   locale,
 }: GetServerSidePropsContext) {
-  const { products, total } = await getProducts({ ...query, locale });
+  const { products, total } = await getCatalogProducts({ ...query, locale });
 
   return {
     props: {
-      products,
-      total,
+      products: products || [],
+      total: total || 0,
       ...(await getCommonTranslations(locale || "en_GB", ["catalog"])),
     },
   };

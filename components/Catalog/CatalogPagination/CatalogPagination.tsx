@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import type { PaginationProps } from "antd";
 import Link from "next/link";
 import useCatalogPerPage from "hooks/useCatalogPerPage";
+import { PATHNAMES } from "@/utils/constants";
 interface ICatalogPagination {
   total?: number;
 }
@@ -21,7 +22,7 @@ const CatalogPagination = ({ total }: ICatalogPagination) => {
       return (
         <Link
           href={{
-            pathname: "/catalog",
+            pathname: PATHNAMES.catalog,
             query: {
               ...router.query,
               page: pageNumber,

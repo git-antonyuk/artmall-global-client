@@ -14,3 +14,7 @@ export const FILTER_PRICE_MAP = [
   [1000, 5000],
   [5000, undefined]
 ];
+
+export const PATHNAMES = {
+  catalog: '/catalog'
+}

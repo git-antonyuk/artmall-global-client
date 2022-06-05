@@ -7,6 +7,7 @@ import { DownOutlined } from "@ant-design/icons";
 import Button from "antd/lib/button";
 import Dropdown from "antd/lib/dropdown";
 import { useTranslation } from "next-i18next";
+import { PATHNAMES } from "@/utils/constants";
 
 const PerPage = () => {
   const { t } = useTranslation("catalog");
@@ -20,7 +21,7 @@ const PerPage = () => {
           label: (
             <Link
               href={{
-                pathname: "/catalog",
+                pathname: PATHNAMES.catalog,
                 query: {
                   ...router.query,
                   limit,

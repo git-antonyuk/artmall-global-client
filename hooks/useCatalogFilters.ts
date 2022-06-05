@@ -1,48 +1,48 @@
-import fetchCollection from "api/fetchCollection";
+import getCollection from "api/asyncGetters/getCollection";
 import { useState } from "react";
-
-const FILTERS_KEYS = ["categories", "styles", "subjects", "techniques"];
 
 const useCatalogFilters = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>();
+  const [categories, setCategories] = useState<[]>();
+  const [styles, setStyles] = useState<[]>();
+  const [subjects, setSubjects] = useState<[]>();
+  const [techniques, setTechniques] = useState<[]>();
 
   const fetch = async () => {
+    if (categories && styles && subjects && techniques) {
+      return;
+    }
     setLoading(true);
 
-    // const filterPromises = FILTERS_KEYS.map((endpoint: string) => {
-    //   return async () => await fetchCollection(endpoint);
-    // });
+    try {
+      const [categoriesList, stylesList, subjectsList, techniquesList] =
+        await Promise.all([
+          getCollection("categories"),
+          getCollection("styles"),
+          getCollection("subjects"),
+          getCollection("techniques"),
+        ]);
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    // try {
-    //   const [categories, styles, subjects, techniques] = await Promise.all(
-    //     filterPromises
-    //   );
-
-    //   console.log(
-    //     "%c 🍵 fetch: ",
-    //     "font-size:12px;background-color: #465975;color:#fff;",
-    //     {
-    //       categories,
-    //       styles,
-    //       subjects,
-    //       techniques,
-    //     }
-    //   );
-    // } catch (error) {
-    //   setError(error);
-    // } finally {
-    //   setLoading(false);
-    setLoading(false);
-    // }
+      setCategories(categoriesList);
+      setStyles(stylesList);
+      setSubjects(subjectsList);
+      setTechniques(techniquesList);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return {
     fetch,
     loading,
     error,
+    categories,
+    styles,
+    subjects,
+    techniques,
   };
 };
 

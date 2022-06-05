@@ -11,17 +11,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ products: IProduct[]; total: number } | IApiError>
 ) {
-  const { page, limit, locale, price } = req.body.params;
+  const { locale } = req.body.params;
 
   try {
     const [total, products]: [number, IProduct[]] = await Promise.all([
       fetchCollectionCount(
         CONTENT_TYPE_NAME,
-        getCollectionsParams({ page, limit, price }).generalOptions
+        getCollectionsParams(req.body.params).generalOptions
       ),
       fetchCollection(
         CONTENT_TYPE_NAME,
-        getCollectionsParams({ page, limit, price }).collectionOptions
+        getCollectionsParams(req.body.params).collectionOptions
       ),
     ]);
     res
@@ -30,6 +30,6 @@ export default async function handler(
   } catch (err: any) {
     res
       .status(err.status || 500)
-      .send({ message: err.message || "Failed to fetch data" });
+      .send({ message: err.message || "Failed to fetch catalog products" });
   }
 }

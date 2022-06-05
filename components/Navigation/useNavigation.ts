@@ -1,3 +1,4 @@
+import { PATHNAMES } from './../../utils/constants';
 import { useTranslation } from "next-i18next";
 
 const useNavigation = () => {
@@ -5,7 +6,7 @@ const useNavigation = () => {
 
   const items = [
     {
-      href: "/catalog",
+      href: PATHNAMES.catalog,
       label: t("headerNavigation.catalog"),
     },
     {
