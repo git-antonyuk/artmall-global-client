@@ -50,7 +50,10 @@ const getCollectionsParams = ({
   if (subject) {
     // subjects is bug on backend, have to fixed to same approach as in all another relations. Like: subject.id
     // TODO fix it
-    generalOptions._where.push({ "subjects.id": getListOfIds(subject) });
+    
+    getListOfIds(subject).forEach(id => {
+      generalOptions._where.push({ "subjects.id": id });
+    })
   }
 
   if (technique) {

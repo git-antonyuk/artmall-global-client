@@ -11,7 +11,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ products: IProduct[]; total: number } | IApiError>
 ) {
-  const { locale } = req.body.params;
+  const { locale, subject } = req.body.params;
 
   try {
     const [total, products]: [number, IProduct[]] = await Promise.all([
@@ -24,6 +24,7 @@ export default async function handler(
         getCollectionsParams(req.body.params).collectionOptions
       ),
     ]);
+
     res
       .status(200)
       .send({ products: transformProducts(products, locale), total });
