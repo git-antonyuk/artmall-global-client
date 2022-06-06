@@ -1,0 +1,15 @@
+{
+  "height": "Висота",
+  "width": "Ширина",
+  "cm": "(см)",
+  "inch": "(дюйм)",
+  "category": "Категорія",
+  "categories": "Категорії",
+  "style": "Стиль",
+  "styles": "Стилі",
+  "subject": "Предмет",
+  "subjects": "Предмет",
+  "technique": "Техніка",
+  "techniques": "Техніки",
+  "btnCleatAll": "Очистити усі фільтри"
+}

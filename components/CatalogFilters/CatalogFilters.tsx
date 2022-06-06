@@ -17,14 +17,14 @@ interface ICatalogFiltersProps {
 }
 const CatalogFilters = ({ total }: ICatalogFiltersProps) => {
   const router = useRouter();
-  const { t } = useTranslation("catalog");
+  const { t } = useTranslation(["catalog", "filters"]);
   const { loading: loadingOfPage } = usePageLoader();
   const {
     loading,
     fetch: fetchFilters,
     categories,
     styles,
-    subjects,
+    // subjects,
     techniques,
   } = useCatalogFilters();
   const [opened, setOpened] = useState<boolean>(router.query.show === "1");
@@ -58,14 +58,12 @@ const CatalogFilters = ({ total }: ICatalogFiltersProps) => {
 
   const header = (
     <header className={cssStyles.header}>
-      <span>{t("filters")}</span>
+      <span>{t("filters", { ns: "catalog" })}</span>
       <h5 className={cssStyles.title}>
-        {t("foundProducts")} {total}
+        {t("foundProducts", { ns: "catalog" })} {total}
       </h5>
     </header>
   );
-
-  const footer = <ClearAllFilters />;
 
   return (
     <>
@@ -77,26 +75,27 @@ const CatalogFilters = ({ total }: ICatalogFiltersProps) => {
         onClose={onClose}
         visible={opened}
         key="filters-menu"
-        footer={footer}
+        footer={<ClearAllFilters />}
       >
         <Spin spinning={loading || loadingOfPage}>
           <Collapse defaultActiveKey={["0", "1", "2", "3", "4"]}>
-            <Panel header={t("price")} key="0">
+            <Panel header={t("price", { ns: "catalog" })} key="0">
               <FilterPrice />
             </Panel>
-            <Panel header={"Categories"} key="1">
+            <Panel header={t("categories", { ns: "filters" })} key="1">
               <FilterItem name="category" items={categories} />
             </Panel>
 
-            <Panel header={"Style"} key="2">
+            <Panel header={t("styles", { ns: "filters" })} key="2">
               <FilterItem name="style" items={styles} />
             </Panel>
 
-            <Panel header={"Subject"} key="3">
+            {/* !!!TODO Fix styles multiple variant on backend.  */}
+            {/* <Panel header={t("subjects", { ns: "catalog" })} key="3">
               <FilterItem name="subject" items={subjects} />
-            </Panel>
+            </Panel> */}
 
-            <Panel header={"Technique"} key="4">
+            <Panel header={t("technique", { ns: "filters" })} key="4">
               <FilterItem name="technique" items={techniques} />
             </Panel>
           </Collapse>

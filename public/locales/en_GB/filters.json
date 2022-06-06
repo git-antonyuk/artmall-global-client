@@ -1,0 +1,15 @@
+{
+  "height": "Height",
+  "width": "Width",
+  "cm": "(cm)",
+  "inch": "(inch)",
+  "category": "Category",
+  "categories": "Categories",
+  "style": "Style",
+  "styles": "Styles",
+  "subject": "Subject",
+  "subjects": "Subjects",
+  "technique": "Technique",
+  "techniques": "Techniques",
+  "btnCleatAll": "Clear all filters"
+}

@@ -28,7 +28,7 @@ export async function getServerSideProps({
     props: {
       products: products || [],
       total: total || 0,
-      ...(await getCommonTranslations(locale || "en_GB", ["catalog"])),
+      ...(await getCommonTranslations(locale || "en_GB", ["catalog", "filters"])),
     },
   };
 }
