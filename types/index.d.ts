@@ -109,6 +109,7 @@ export interface IProduct {
   subjects: string[];
   id: string;
   user: IUser;
+  index: number;
 }
 
 export interface IApiError {

@@ -29,6 +29,11 @@ const nextConfig = withAntdLess({
   future: {
     webpack5: true,
   },
+
+  // images: {
+  //   domains: ["artmall-global-files.s3.eu-central-1.amazonaws.com"],
+  //   formats: ["image/jpeg", "image/png"],
+  // },
 });
 
 module.exports = nextConfig;

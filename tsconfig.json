@@ -39,7 +39,7 @@
     "**/*.ts",
     "**/*.tsx",
     "utils/constants.ts"
-  ],
+, "components/Ratio/Ratio.js"  ],
   "exclude": [
     "node_modules"
   ]
